@@ -22,11 +22,6 @@ if(process.env.NODE_ENV === 'production'){
      })
 }
 
-app.listen(port, error => {
-     if(error) throw error;
-     console.log("Server running on port " + port);
-})
-
 app.post('/payment', (req, res) => {
      const body = {
           source: req.body.token.id,
@@ -43,3 +38,8 @@ app.post('/payment', (req, res) => {
      })
 
 })
+
+app.listen(port, error => {
+     if(error) throw console.log("Error spinning up server: " + error);
+     console.log("Server running on port " + port);
+});
